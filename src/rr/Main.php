@@ -32,16 +32,21 @@ public function rruiform(Player $sender){
 		$form = $api->createSimpleForm(function(Player $sender, ?int $data){
 			if(!isset($data)) return;
 			switch($data){
-			case 0:
-			    break;
-                        case 1:
+		
+                        case 0:
                             $this->repair($sender);
                             break;
-                        case 2:
+                        case 1:
                             $this->rename($sender);
                             break;
       }
     });
-//todo
+    $form->setTitle("§a§lRRUI");
+    $form->addButton("§eRepair");
+    $form->addButton("§bRename");
+    $form->addButton("§cEXIT");
+    $form->sendToPlayer($sender);
  }
+public function repair(Player $player){
+//todo
 }
