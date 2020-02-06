@@ -70,24 +70,25 @@ public function repair(Player $sender){
 	       	return false;
 				
      }
-							return true;
-							}else{
-								$sender->sendMessage("§cThis item can't repaired");
-								return false;
-						}
-						return true;
-						}else{
-									$sender->sendMessage("§cYou don't have enough money!");
-									return true;
-					}
-					});
+		return true;
+	      }else{
+         	$sender->sendMessage("§cThis item can't repaired");
+		return false;
+		}
+		  return true;
+			}else{
+		$sender->sendMessage("§cYou don't have enough money!");
+		return true;
+	 }
+	   });
 	  $mny = $this->getConfig()->get("price");
           $dg = $sender->getInventory()->getItemInHand()->getDamage();
           $pc = $mny * $dg;
           $economy = EconomyAPI::getInstance();
           $mne = $economy->myMoney($sender);
-		  $f->setTitle("Repair your item using money");
-		  $f->addLabel("§eYour money: $mne \n§aPrice perDamage: $mny\n§aItem damage: $dg \n§dTotal money needed : $pc");
-		  $f->sendToPlayer($sender);
-			}
+         $f->setTitle("Repair your item using money");
+	 $f->addLabel("§eYour money: $mne \n§aPrice perDamage: $mny\n§aItem damage: $dg \n§dTotal money needed : $pc");
+         $f->sendToPlayer($sender);
+   }
+//todo
 }
