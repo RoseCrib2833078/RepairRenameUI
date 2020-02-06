@@ -27,7 +27,19 @@ class Main extends PluginBase implements Listener {
                 return true;
         }
    }
-public function rruiform(Player $player){
-    //todo
+public function rruiform(Player $sender){
+    $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+		$form = $api->createSimpleForm(function(Player $sender, ?int $data){
+			if(!isset($data)) return;
+			switch($data){
+			case 0:
+			    break;
+                        case 1:
+                            $this->repair($sender);
+                            break;
+                        case 2:
+                            $tbis->rename($sender);
+                            break
+//todo
  }
 }
