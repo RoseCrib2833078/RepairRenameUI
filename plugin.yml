@@ -3,7 +3,5 @@ main: rr\Main
 version: 1.0.0
 author: bumbumkill
 commands:
- rename:
- description: rename your items
- repair:
- description: repair your items
+ rrui:
+ description: open toolsUI
