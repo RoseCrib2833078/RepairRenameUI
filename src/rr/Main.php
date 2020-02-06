@@ -38,8 +38,10 @@ public function rruiform(Player $sender){
                             $this->repair($sender);
                             break;
                         case 2:
-                            $tbis->rename($sender);
-                            break
+                            $this->rename($sender);
+                            break;
+      }
+    });
 //todo
  }
 }
