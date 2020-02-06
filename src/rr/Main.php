@@ -23,5 +23,11 @@ class Main extends PluginBase implements Listener {
         case "rrui":
         if(!$sender instanceof Player){
                 $sender->sendMessage("§cUse that command in game!.");
+                $this->rruiform($sender);
                 return true;
         }
+   }
+public function rruiform(Player $player){
+    //todo
+ }
+}
