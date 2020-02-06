@@ -47,6 +47,47 @@ public function rruiform(Player $sender){
     $form->addButton("§cEXIT");
     $form->sendToPlayer($sender);
  }
-public function repair(Player $player){
-//todo
+public function repair(Player $sender){
+		  $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+		  $f = $api->createCustomForm(function(Player $sender, ?array $data){
+		      if(!isset($data)) return;
+		  $economy = EconomyAPI::getInstance();
+          $mymoney = $economy->myMoney($sender);
+          $cash = $this->getConfig()->get("price");
+          $dg = $sender->getInventory()->getItemInHand()->getDamage();
+          if($mymoney >= $cash * $dg){
+	      $economy->reduceMoney($sender, $cash * $dg);
+          $index = $sender->getPlayer()->getInventory()->getHeldItemIndex();
+	  $item = $sender->getInventory()->getItem($index);
+	  $id = $item->getId();
+	   if($item instanceof Armor or $item instanceof Tool){
+	     if($item->getDamage() > 0){
+		 $sender->getInventory()->setItem($index, $item->setDamage(0));
+                 $sender->sendMessage("§aYour have been repaired");
+		  return true;
+		    }else{
+		 $sender->sendMessage("§c Item doesn't have any damage.");
+	       	return false;
+				
+     }
+							return true;
+							}else{
+								$sender->sendMessage("§cThis item can't repaired");
+								return false;
+						}
+						return true;
+						}else{
+									$sender->sendMessage("§cYou don't have enough money!");
+									return true;
+					}
+					});
+	  $mny = $this->getConfig()->get("price");
+          $dg = $sender->getInventory()->getItemInHand()->getDamage();
+          $pc = $mny * $dg;
+          $economy = EconomyAPI::getInstance();
+          $mne = $economy->myMoney($sender);
+		  $f->setTitle("Repair your item using money");
+		  $f->addLabel("§eYour money: $mne \n§aPrice perDamage: $mny\n§aItem damage: $dg \n§dTotal money needed : $pc");
+		  $f->sendToPlayer($sender);
+			}
 }
