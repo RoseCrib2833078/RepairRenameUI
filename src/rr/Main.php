@@ -8,6 +8,9 @@ use pocketmine\command\CommandSender;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\Listener;
 use jojoe77777\FormAPI;
+use pocketmine\item\Item;
+use pocketmine\item\Tool;
+use pocketmine\item\Armor;
 use pocketmine\Player;
 use pocketmine\Server;
 
