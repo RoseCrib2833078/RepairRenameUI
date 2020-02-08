@@ -19,7 +19,7 @@ class Main extends PluginBase implements Listener {
     
     public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
-    $this->getLogger()->info("p");
+    $this->getLogger()->info("plugin enabled by Bumbumkill");
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
