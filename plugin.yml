@@ -1,7 +1,9 @@
 name: RepairRenameUI
 main: rr\Main
 version: 1.0.0
+api: 3.0.0
 author: bumbumkill
+
 commands:
- rrui:
- description: open toolsUI
+ rr:
+  description: "Open RepairRenameUI"
