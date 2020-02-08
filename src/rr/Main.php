@@ -93,5 +93,35 @@ public function repair(Player $sender){
 	 $f->addLabel("§eYour money: $mne \n§aPrice perDamage: $mny\n§aItem damage: $dg \n§dTotal money needed : $pc");
          $f->sendToPlayer($sender);
    }
-//todo
+
+public function rename(Player $sender){
+            $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+		    $f = $api->createCustomForm(function(Player $sender, ?array $data){
+			if(!isset($data)) return;
+			$item = $sender->getInventory()->getItemInHand();
+			if ($item->getId() == 0) {
+                    $sender->sendMessage("§cHold item in hand!");
+                    return;
+                }
+           $economy = EconomyAPI::getInstance();
+          $mymoney = $economy->myMoney($sender);
+          $rename = $this->getConfig()->get("price-rename");
+          if($mymoney >= $rename){
+	      $economy->reduceMoney($sender, $rename);
+                $item->setCustomName($data[1]);
+                $sender->getInventory()->setItemInHand($item);
+                $sender->sendMessage("§asuccessfully changed item name to §e$data[1]");
+                }else{
+             $sender->sendMessage("§cYou don't have enough money!");
+             }
+	    });
+	   
+        $economy = EconomyAPI::getInstance();
+          $mymoney = $economy->myMoney($sender);
+          $rename = $this->getConfig()->get("price-rename");
+		$f->setTitle("§e§l•RenameUI•");
+		$f->addLabel("§aRename cost: §e$rename\n§bYour money: $mymoney");
+		$f->addInput("§cRename Item", "HardCore");
+		$f->sendToPlayer($sender);
+	     }
 }
