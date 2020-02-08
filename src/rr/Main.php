@@ -7,13 +7,14 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\Listener;
-use jojoe77777\FormAPI;
-use onebone\economyapi\EconomyAPI;
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\item\Armor;
 use pocketmine\Player;
 use pocketmine\Server;
+
+use jojoe77777\FormAPI;
+use onebone\economyapi\EconomyAPI;
 
 class Main extends PluginBase implements Listener {
     
@@ -44,12 +45,14 @@ public function rruiform(Player $sender){
                         case 1:
                             $this->rename($sender);
                             break;
+                        case 2:
+                            break;
       }
     });
-    $form->setTitle("§a§lRRUI");
-    $form->addButton("§eRepair");
-    $form->addButton("§bRename");
-    $form->addButton("§cEXIT");
+    $form->setTitle("§a§l•RRUI•");
+    $form->addButton("§e•REPAIR•");
+    $form->addButton("§b•RENAME•");
+    $form->addButton("§c•EXIT•");
     $form->sendToPlayer($sender);
  }
 public function repair(Player $sender){
