@@ -8,6 +8,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\Listener;
 use jojoe77777\FormAPI;
+use onebone\economyapi\EconomyAPI;
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\item\Armor;
@@ -18,18 +19,19 @@ class Main extends PluginBase implements Listener {
     
     public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
+    $this->getLogger()->info("p");
     }
 
-    public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args):bool
-    {
-        switch($cmd->getName()){
-        case "rrui":
-        if(!$sender instanceof Player){
-                $sender->sendMessage("§cUse that command in game!.");
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
+    	if($sender instanceof Player){
+        switch($command->getName()){
+            case "rr":
                 $this->rruiform($sender);
-                return true;
         }
-   }
+        return true;
+    }
+    return false;
+ }
 public function rruiform(Player $sender){
     $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		$form = $api->createSimpleForm(function(Player $sender, ?int $data){
