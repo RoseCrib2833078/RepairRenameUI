@@ -18,9 +18,7 @@ use jojoe77777\FormAPI;
 use onebone\economyapi\EconomyAPI;
 
 class Main extends PluginBase implements Listener {
-    
-"&a" == T::GREEN
-
+   
     public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getLogger()->info(T::AQUA . "plugin enabled");
@@ -115,7 +113,7 @@ public function rename(Player $sender){
           $rename = $this->getConfig()->get("price-rename");
           if($mymoney >= $rename){
 	      $economy->reduceMoney($sender, $rename);
-                $item->setCustomName($data[1]);
+                $item->setCustomName($this->color(), $data[1]);
                 $sender->getInventory()->setItemInHand($item);
                 $sender->sendMessage(T::GREEN . "successfully changed item name to §e$data[1]");
                 }else{
@@ -131,4 +129,27 @@ public function rename(Player $sender){
           $f->addInput(T::RED . "Rename Item:", "HardCore");
 	  $f->sendToPlayer($sender);
 	     }
+
+    private function color($string)
+    {
+        $string = str_replace("{COLOR_BLACK}", "&0", $string);
+        $string = str_replace("{COLOR_DARK_BLUE}", "&1", $string);
+        $string = str_replace("{COLOR_DARK_GREEN}", "&2", $string);
+        $string = str_replace("{COLOR_DARK_AQUA}", "&3", $string);
+        $string = str_replace("{COLOR_DARK_RED}", "&4", $string);
+        $string = str_replace("{COLOR_DARK_PURPLE}", "&5", $string);
+        $string = str_replace("{COLOR_GOLD}", "&6", $string);
+        $string = str_replace("{COLOR_GRAY}", "&7", $string);
+        $string = str_replace("{COLOR_DARK_GRAY}", "&8", $string);
+        $string = str_replace("{COLOR_BLUE}", "&9", $string);
+        $string = str_replace("{COLOR_GREEN}", "&a", $string);
+        $string = str_replace("{COLOR_AQUA}", "&b", $string);
+        $string = str_replace("{COLOR_RED}", "&c", $string);
+        $string = str_replace("{COLOR_LIGHT_PURPLE}", "&d", $string);
+        $string = str_replace("{COLOR_YELLOW}", "&e", $string);
+        $string = str_replace("{COLOR_WHITE}", "&f", $string);
+        $string = str_replace("{FORMAT_OBFUSCATED}", "&k", $string);
+        $string = str_replace("{FORMAT_BOLD}", "&l", $string);
+        return $string;
+    }
 }
