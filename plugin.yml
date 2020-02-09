@@ -6,4 +6,4 @@ author: bumbumkill
 
 commands:
  rr:
-  description: "Open RepairRenameUI"
+  description: "RenameItem"
