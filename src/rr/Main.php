@@ -19,6 +19,8 @@ use onebone\economyapi\EconomyAPI;
 
 class Main extends PluginBase implements Listener {
     
+"&a" == T::GREEN
+
     public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getLogger()->info(T::AQUA . "plugin enabled");
